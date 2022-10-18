@@ -5,7 +5,7 @@ const bottoneGeneratore = document.querySelector(".btn_play")
 console.log(bottoneGeneratore);
 
 /* Seleziono la griglia */
-let containerGrid = document.querySelector('.container')
+let containerGrid = document.querySelector('.container_grid')
 console.log(containerGrid);
 
 /* Creo i miei box */
@@ -30,6 +30,8 @@ const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)
 
 
 bottoneGeneratore.addEventListener("click", function () {
+
+    containerGrid.innerHTML = ''
     console.log("Bottone cliccato");
 
 
@@ -73,7 +75,7 @@ bottoneGeneratore.addEventListener("click", function () {
 
                     if(boxNumber == bomb) {
                         currentBox.classList.toggle('rosso')
-
+                        if(!alert('hai perso!')){window.location.reload();}
                     }
                     
                 }
