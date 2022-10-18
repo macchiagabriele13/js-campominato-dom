@@ -44,24 +44,60 @@ bottoneGeneratore.addEventListener("click", function () {
             })
         }
     }
+    /* Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. */
+    /* Attenzione:
+    **nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali. */
+
+    const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+    const bombs = []
+    while (bombs.length !== 16) {
+        const bomb = getRandomNumber(1, numbMax);
+        if (!bombs.includes(bomb)) {
+            bombs.push(bomb);
+        };
+    }
+
+    console.log(bombs);
+
+
+    /* if (bombs == currentBox) {
+        bombs.addEventListener("click", function () {
+            bombs.classList.add("bomb")
+            console.log(bombs.innerHTML)
+        
+    } else {
+        
+    } */
+
+
+
+
 
 })
 
-/* Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata. */
+/* Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. */
+/* Attenzione:
+**nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali. */
 
-/* for(let i = 1; i <= boxEl.length; i++){
-    let currentBox = boxEl[i]
-    console.log(currentBox);
+const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-    /* currentBox.addEventListener("click", function(){
-        currentBox.classList.toggle("azzurro")
-        console.log(currentBox.id)
-    }) */
+const bombs = []
+while (bombs.length !== 16) {
+    const bomb = getRandomNumber(1, numbMax);
+    if (!bombs.includes(bomb)) {
+        bombs.push(bomb);
+    };
+}
+
+console.log(bombs);
 
 
-/* Al click compare la mia griglia */
-
-
-/* bottoneGeneratore.addEventListener("click", function () {
-    containerGrid.style.display = "flex";
-}) */
+/* if (bombs == currentBox) {
+    bombs.addEventListener("click", function () {
+        bombs.classList.add("bomb")
+        console.log(bombs.innerHTML)
+    
+} else {
+    
+} */
