@@ -41,29 +41,46 @@ bottoneGeneratore.addEventListener("click", function () {
 
         }
 
+
+
         let boxEl = document.querySelectorAll('.box')
         console.log(boxEl);
 
+        const bombs = generateBombs(1, numbMax)
+        console.log(bombs);
+
+
+
+
+        
+
         for (let i = 0; i < boxEl.length; i++) {
             let currentBox = boxEl[i]
-            console.log(currentBox);
+            /* console.log(currentBox); */
 
             currentBox.addEventListener("click", function () {
+                /* Dalla casella selezionata mi prendo il mio numero */
+                const boxNumber = currentBox.innerHTML
+                console.log(boxNumber, 'numero box');
 
-                if(bombs.includes(currentBox) ){
-                    currentBox.classList.toggle("rosso")
-                   
-                } else if(!bombs.includes(currentBox) ) {
-                    currentBox.classList.toggle("azzurro")
+                currentBox.classList.toggle('azzurro')
+
+                /* Devo controllare se il numero che ho preso sia presente nell'array delle bombe, e per farlo devo usare un ciclo */
+                
+                for (let i = 0; i < bombs.length; i++) {
+                    const bomb = bombs[i];
+                    /* console.log(bomb, 'bomba'); */
+
+                    if(boxNumber == bomb) {
+                        currentBox.classList.toggle('rosso')
+
+                    }
                     
                 }
-
-                
             })
 
         }
-        const bombs = generateBombs(1, numbMax)
-        console.log(bombs);
+        
 
       
     
