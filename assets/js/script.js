@@ -8,6 +8,10 @@ console.log(bottoneGeneratore);
 let containerGrid = document.querySelector('.container_grid')
 console.log(containerGrid);
 
+
+let moving = document.querySelector('.mosse')
+console.log(moving);
+
 /* Creo i miei box */
 
 /* for (let i = 1; i <= 100; i++) {
@@ -18,6 +22,9 @@ console.log(containerGrid);
 let numbMax = 100
 
 let bombMax = 16
+
+let move = (numbMax - bombMax)
+
 
 const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -51,7 +58,7 @@ bottoneGeneratore.addEventListener("click", function () {
         const bombs = generateBombs(1, numbMax)
         console.log(bombs);
 
-
+        let counter = 0
 
 
         
@@ -66,6 +73,8 @@ bottoneGeneratore.addEventListener("click", function () {
                 console.log(boxNumber, 'numero box');
 
                 currentBox.classList.toggle('azzurro')
+                counterMove (move)
+                counterClick(counter)
 
                 /* Devo controllare se il numero che ho preso sia presente nell'array delle bombe, e per farlo devo usare un ciclo */
                 
@@ -76,22 +85,47 @@ bottoneGeneratore.addEventListener("click", function () {
                     if(boxNumber == bomb) {
                         currentBox.classList.toggle('rosso')
                         if(!alert('hai perso!')){window.location.reload();}
+
+                        
                     }
                     
                 }
             })
 
         }
-        
-
-      
-    
-
-
 
     }
 })
 
+
+
+function counterClick(number){
+    number += 1;
+    const displayCount = document.querySelector('.punteggio');
+    displayCount.innerHTML = 'Punteggio: '+ number;
+}
+
+
+function counterMove(number){
+    number -= 1;
+    const displayMove = document.querySelector('.mosse');
+    displayMove.innerHTML = 'Mosse rimanenti:' + number;
+}
+
+
+
+
+function bombOrNot(arrayBombs, number, position){
+    for (let i = 0; i < arrayBombs.length; i++) {
+          const bomb = arrayBombs[i];
+          /* console.log(bomb, 'sei qui'); */
+          if (number == bomb){
+                
+                position.classList.add('explosion'); //uso toggle per mettere e rimuovere la classe al click
+                if(!alert('hai perso!')){window.location.reload();}
+          }
+    }
+}
 
 /* Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. */
 /* Attenzione:
