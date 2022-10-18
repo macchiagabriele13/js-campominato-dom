@@ -61,7 +61,7 @@ bottoneGeneratore.addEventListener("click", function () {
         let counter = 0
 
 
-        
+
 
         for (let i = 0; i < boxEl.length; i++) {
             let currentBox = boxEl[i]
@@ -73,22 +73,32 @@ bottoneGeneratore.addEventListener("click", function () {
                 console.log(boxNumber, 'numero box');
 
                 currentBox.classList.toggle('azzurro')
-                counterMove (move)
-                counterClick(counter)
+
+                counter += 1;
+                const displayCount = document.querySelector('.punteggio');
+                displayCount.innerHTML = 'Punteggio: ' + counter;
+
+                
+                move -= 1
+                const displayMove = document.querySelector('.mosse');
+                displayMove.innerHTML = 'Mosse rimanenti:' + move;
+
+                /* counterMove (move)
+                counterClick(counter) */
 
                 /* Devo controllare se il numero che ho preso sia presente nell'array delle bombe, e per farlo devo usare un ciclo */
-                
+
                 for (let i = 0; i < bombs.length; i++) {
                     const bomb = bombs[i];
                     /* console.log(bomb, 'bomba'); */
 
-                    if(boxNumber == bomb) {
+                    if (boxNumber == bomb) {
                         currentBox.classList.toggle('rosso')
-                        if(!alert('hai perso!')){window.location.reload();}
+                        if (!alert('hai perso!')) { window.location.reload(); }
 
-                        
+
                     }
-                    
+
                 }
             })
 
@@ -99,31 +109,31 @@ bottoneGeneratore.addEventListener("click", function () {
 
 
 
-function counterClick(number){
+/* function counterClick(number){
     number += 1;
     const displayCount = document.querySelector('.punteggio');
     displayCount.innerHTML = 'Punteggio: '+ number;
-}
+} */
 
 
-function counterMove(number){
+/* function counterMove(number){
     number -= 1;
     const displayMove = document.querySelector('.mosse');
     displayMove.innerHTML = 'Mosse rimanenti:' + number;
-}
+} */
 
 
 
 
-function bombOrNot(arrayBombs, number, position){
+function bombOrNot(arrayBombs, number, position) {
     for (let i = 0; i < arrayBombs.length; i++) {
-          const bomb = arrayBombs[i];
-          /* console.log(bomb, 'sei qui'); */
-          if (number == bomb){
-                
-                position.classList.add('explosion'); //uso toggle per mettere e rimuovere la classe al click
-                if(!alert('hai perso!')){window.location.reload();}
-          }
+        const bomb = arrayBombs[i];
+        /* console.log(bomb, 'sei qui'); */
+        if (number == bomb) {
+
+            position.classList.add('explosion'); //uso toggle per mettere e rimuovere la classe al click
+            if (!alert('hai perso!')) { window.location.reload(); }
+        }
     }
 }
 
